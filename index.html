@@ -1,0 +1,1400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planetary Surface and Subsurface Processes</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+/>
+
+  <style>
+    :root {
+  --frame-width: 1920px;
+  --frame-height: 1080px;
+  --banner-height: 5rem;
+  --banner-bg: rgba(255, 255, 255, 0.123);
+  --banner-blur: 4px;
+  --slide-padding-top: 4rem;
+  --text-color: #9e9e9e;
+  --footer-color: #999;
+  --footer-size: 0.4em;
+  --font-family: 'Helvetica Neue', Arial, sans-serif;
+  --frag-fade: 0.5;
+  --frag-color: #fb8500;
+  --backdrop-opacity: 0.25;
+  --backdrop-blur: 4px;
+  --border-radius: 0.45em;
+}
+
+/* Frame & slide sizing */
+.reveal {
+  width: var(--frame-width);
+  height: var(--frame-height);
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal .slides {
+  width: 100%;
+  height: 100%;
+  padding-top: var(--slide-padding-top);
+  box-sizing: border-box;
+}
+
+/* Base typography */
+body, .reveal {
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.reveal h1, .reveal h2,
+.reveal h3, .reveal h4, .cover-text h1,
+.cover-text h2, .cover-text h3,
+.cover-text h4 {
+  text-align: center;
+  
+}
+
+.reveal h1              { font-size: 1.5em; }
+.reveal h2              { font-size: 1em; }
+.reveal h3              { font-size: 0.8em; }
+.reveal h4              { font-size: 0.6em; }
+
+.cover-text h1 { font-size: 5em; margin-top: 2em; }
+.cover-text h2 { font-size: 2em; }
+.cover-text h4 { font-size: 2em; margin-top: 0.1em; }
+.cover-text h3 { font-size: 1em; margin: 0.5em 0; }
+
+/* Cover metadata */
+.cover-text p {
+  margin-top: 2em;
+  text-align: center;
+}
+.cover-text p.date    { font-size: 0.5em; margin-top: 4em; color:#999}
+.cover-text p.name    { font-size: 0.8em; margin-top: 1em; color:#fff}
+.cover-text p.doctor  { font-size: 0.8em; margin-top: 4em; color:#999}
+.cover-text .committee{ font-size: 0.6em; margin-top: 4em; color:#999}
+
+/* Lists */
+.reveal .slides section ol {
+  max-width: calc(var(--frame-width) - 20px);
+  margin: 2em auto;
+  padding: 0 1em;
+  list-style-position: inside;
+}
+
+/* Fragments */
+.reveal .slides section ol li.fragment {
+  visibility: visible !important;
+  opacity: var(--frag-fade);
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+.reveal .slides section ol li.fragment.current-fragment {
+  opacity: 1;
+  color: var(--frag-color);
+}
+
+/* Text highlight backdrop */
+.reveal .slides section h1,
+.reveal .slides section h2,
+.reveal .slides section h3 {
+  display: inline-block;
+  padding: 0.2em 0.25em;
+  border-radius: var(--border-radius);
+  background: rgba(255,255,255,var(--backdrop-opacity));
+  backdrop-filter: blur(var(--backdrop-blur));
+  
+}
+
+[data-background-color*="#333"] h2 {
+  background: rgba(0,0,0,var(--backdrop-opacity));
+  color: #fff;
+}
+
+/* COVER SECTION TWEAKS */
+.cover-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;     /* center everything horizontally */
+  text-align: center;      /* center text inside each block */
+  padding: 2rem;           /* give it some breathing room all around */
+  width: 100%;             /* full width of the slide */
+  max-width: 1920;       /* but don’t let it grow absurdly wide */
+  margin: 0 auto;          /* center the container within its parent */
+  box-sizing: border-box;  /* include padding in that width */
+}
+.cover-container h1,
+.cover-container h2,
+.cover-container h3,
+.cover-container h4 {
+  background: none !important;
+  backdrop-filter: none !important;
+  padding: 0 !important;
+}
+.cover-text {
+  width: 100%;
+  max-width: 90%;          /* so text doesn’t run edge-to-edge */
+  margin: 0 auto;          /* center the text block in the container */
+}
+
+/* Optional: tighten up vertical spacing if things still feel too far apart */
+.cover-text h1,
+.cover-text h4,
+.cover-text p {
+  margin-top: 0.5em;
+}
+.cover-text h1 {
+  margin-top: 1em;
+}
+
+/* Footer */
+.footer-group {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: var(--footer-size);
+  color: var(--footer-color);
+}
+.footer-group p {
+  margin: 0.1em 0;
+}
+
+/* Logo banner */
+.logo-banner {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--frame-width);
+  height: var(--banner-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--banner-bg);
+  backdrop-filter: blur(var(--banner-blur));
+  box-sizing: border-box;
+  z-index: 1000;
+}
+.logo-banner .logo-group {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.logo-banner .logo {
+  width: 200px;
+  object-fit: contain;
+}
+
+/* Rotated background for vertical slides */
+.vertical-bg .slide-background {
+  transform: rotate(180deg);
+  transform-origin: center;
+  width: 100%;
+  height: 100%;
+  background-size: cover !important;
+}
+
+/* Image layouts */
+.img-row {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+.img-row img {
+  max-width: 35%;
+  height: auto;
+}
+
+.img-2col {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 90vw;
+  max-height: 80vh;
+  margin: 0 auto;
+  gap: 1em;
+  overflow: hidden;
+}
+.img-2col .left {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-2col .left img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+.img-2col .right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5em;
+}
+.img-2col .right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Objectives grid */
+.objectives {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 1em;
+  margin-top: 1em;
+  padding: 0 1em;
+}
+.objective .icon {
+  font-size: 1.8em;
+  margin-bottom: 0.3em;
+}
+.objective h3 {
+  font-size: 1.1em;
+  margin: 0.2em 0;
+}
+.objective p {
+  font-size: 0.75em;
+  line-height: 1.2;
+}
+
+  </style>
+
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <div class="logo-banner">                  
+          <img src="images/epn2024_white.png" class="logo">
+          <img src="images/CU_Logotype_RGB_white_blue_red.png" class="logo">
+          <img src="images/Explore_Logo_Standard.png" class="logo">        
+      </div>
+      <div class="footer-group">
+        <p>© 2025 Giacomo Nodjoumi. All rights reserved.</p>
+      </div>
+      <!-- COVER SLIDE -->
+      <section >
+        <div class="cover-container">
+          <div class="cover-text">            
+            <p class="doctor">Doctor of Philosophy in Geosciences</p>
+            <h1 class="r-fit-text">Planetary Surface and Subsurface Processes:</h1>
+            <h4 class="r-fit-text">Landform Detection, Radar Analysis, and Deep Learning Applications in Geosciences</h4>
+            <p class="name"><strong>by Giacomo Nodjoumi</strong></p>            
+            <p class="committee">
+              <strong>Dissertation Committee:</strong>
+              • Prof. Dr. Vikram Unnithan 
+              • Prof. Dr. Joachim Vogt
+              • Prof. Dr. Roberto Orosei
+              • Dr. Angelo Pio Rossi 
+            </p>
+            <p class="date"><strong>Date of Defense:</strong> April 29th, 2025</p>
+          </div>
+        </div>
+        
+        
+
+      </section>
+
+      <!-- TABLE OF CONTENTS -->
+      <section data-visibility="hidden">
+             
+        <h1>Table of Contents</h1><br>
+        <ol>
+          <li class="fragment">Introduction</li>
+          <li class="fragment">Objectives</li>
+          <li class="fragment">Methodology &amp; Structure</li>
+          <li class="fragment">Deep Learning Landform Mapping</li>
+          <li class="fragment">Subsurface Sounding Radar Data analysis</li>
+          <li class="fragment">Europlanet GMAP JupyterHub</li>
+          <li class="fragment">Related projects and collaborations</li>
+          <li class="fragment">Integrated discussions and conclusions</li>
+          <li class="fragment">Live Demo</li>
+          <li class="fragment">Q&A</li>
+        </ol>        
+      </section>
+      <section data-transition="zoom">
+        <h1 >Mapping the Unseen</h1>
+        <p>
+          Surfaces of rocky planets host features, like 
+          <span style="color:#ffffff; font-weight:bold">pits</span> and 
+          <span style="color:#ffffff; font-weight:bold">skylights</span>, that may lead to 
+          <span style="color:#ffffff; font-weight:bold">subsurface voids</span>.<br>
+          These structures are 
+          <span style="color:#ffffff; font-weight:bold">scientifically valuable</span> and 
+          <span style="color:#ffffff; font-weight:bold">operationally strategic</span> for future exploration.
+        </p>
+      </section>
+      
+      
+      <section data-transition="zoom">
+        <h1>Opportunity Meets Urgency</h1>
+        <p>
+          Decades of orbital missions have produced 
+          <span style="color:#ffffff; font-weight:bold">petabytes of imagery and radar data</span><br>
+          over the Moon and Mars rich archives still underexploited.<br><br>
+      
+          Meanwhile, space agencies are preparing for a 
+          <span style="color:#ffffff; font-weight:bold">sustained human return to the Moon</span><br>
+          and the <span style="color:#ffffff; font-weight:bold">first crewed missions to Mars</span>.<br><br>
+      
+          Identifying stable, accessible shelters is becoming a 
+          <span style="color:#ffffff; font-weight:bold">strategic priority</span>.
+        </p>
+      </section>
+      
+
+      
+    <section>
+      <section class="vertical-bg" 
+        data-background-image="images/ESP_011677_1655_RED.NOMAP.browse.jpg" 
+        data-background-size="cover"
+        data-background-position="center"
+        style="position: relative; width: 1920px; height: 1080px;">
+
+        <!-- Centered title at 540px (middle of 1080px) -->
+        <h1 style="
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;">
+          1 - Pits, Sinkholes &amp; Skylights
+        </h1>
+
+        <!-- Bottom-centered credits at ~1040px -->
+        <div style="
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: ESP_011677_1655_RED - NASA/JPL/University of Arizona
+        </div>
+
+      </section>
+      
+
+
+      <!-- 1.2 Pits, Sinkholes & Skylights -->
+      <section>
+        <div style="display: flex; align-items: center; height: 80%;">
+          <!-- left column -->
+          <div style="flex: 1; padding-right: 2em;">
+            <h3>Elliptical to circular depressions with flat rims/bottoms, steep to sub‑vertical walls</h3>
+          </div>
+
+          <!-- right column -->
+          <div style="flex: 1; text-align: center;">
+            <img
+              class="r-stretch"
+              src="images/pit.png"
+              alt="Types of pits, sinkholes, skylights"
+              height="900px"
+            >
+          </div>
+          <div style="
+          position: absolute;
+          bottom: 5px;
+          left: 75%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi 2025
+        </div>
+        </div>
+      </section>        
+
+      <section data-background-image="images/PXL_20230506_140753912.jpg" data-background-size="cover">
+
+        <!-- Title (top-right corner) -->
+        <div style="position: absolute; top: 12em; right: 10rem; color: white;">
+          <h1>Lava Tubes</h1>
+        </div>
+      
+        <!-- Blurred text box that wraps content -->
+        <div style="
+            position: absolute;
+            top: 21em;
+            left: 1.5em;
+            display: inline-block;
+            padding: 0.5em 0.5em;
+            border-radius: var(--border-radius);
+            background: rgba(100,100,100,0.5);
+            backdrop-filter: blur(var(--backdrop-blur));
+            color: rgb(255, 255, 255);
+            width: fit-content;
+            max-width: 100%;
+          ">
+          <ol style="margin: 0; padding-left: 0.5em;">
+            <li class="fragment">Pyroducts: roofed lava conduits on Earth, Mars, Moon</li>
+            <li class="fragment">Morphology varies with gravity, volcanic style, planetary conditions</li>
+          </ol>
+        </div>
+      
+      </section>
+      
+      <section>
+        
+        <div style="display: flex; align-items: center; height: 80%;">
+          <!-- left column -->
+          <div style="flex: 1; padding-right: 2em;">
+            <h1>Formation Mechanisms</h1>       
+            <ol>
+              <li class="fragment">Rapid‑cool crust → insulation of molten core</li>
+              <li class="fragment">Genetic processes: overcrust, shallow/deep inflation, conduit draining</li>
+            </ol>
+          </div>
+
+          <!-- right column -->
+          <div style="flex: 1; text-align: center;">
+            <img
+              class="r-stretch"
+              src="images/lavatubes.png"
+              alt="Types of pits, sinkholes, skylights"
+              width="800px"
+            >
+          </div>
+          <div style="
+          position: absolute;
+          bottom: 5px;
+          left: 75%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credit: Sauro et al. 2020, Kempe at al., 2012
+        </div>
+        
+      </section>
+      <!-- 1.4 Formation Mechanisms -->
+      <section data-background-image="images/PXL_20230506_073408155.jpg" data-background-size="cover">
+
+        <!-- Title (top-right corner) -->
+        <div style="position: absolute; top: 12em; left: 8rem; color: white;">
+          <h1>Sizes</h1><br>
+        </div>
+      
+        <!-- Blurred text box that wraps content -->
+        <div style="
+            position: absolute;
+            top: 21em;
+            left: 1.5em;
+            display: inline-block;
+            padding: 0.5em 0.5em;
+            border-radius: var(--border-radius);
+            background: rgba(100,100,100,0.5);
+            backdrop-filter: blur(var(--backdrop-blur));
+            color: rgb(255, 255, 255);
+            width: fit-content;
+            max-width: 100%;
+          ">
+          <ol style="margin: 0; padding-left: 0.5em;">
+            <li class="fragment">Earth: 0.5–100 m;</li>
+            <li class="fragment">Mars/Moon: 20-300+ m</li>
+          </ol>
+        </div>
+      
+      </section>
+            
+      <!-- 1.7 Identification & Detectability -->
+      <section>
+        <h1>Identification &amp; Detectability</h1>
+        <ol>
+          <li class="fragment">Surface markers: skylights, collapse chains, ridges</li>
+          <li class="fragment">Remote Sensing: LIDAR, Imagery, RADAR; resolution &amp; illumination limits</li>
+        </ol>
+      </section>
+      
+      <section data-background-image="images/M114328462R_thumb.png" data-background-size="cover">
+
+        <!-- Title (top-right corner) -->
+        <div style="position: absolute; top: 4em; left: 25rem; color: white;">
+          <h1>Searching for a needle in a haystack.</h1><br>
+        </div>
+      
+        <!-- Blurred text box that wraps content -->
+        <div style="
+            position: absolute;
+            top: 21em;
+            left: 1.5em;
+            display: inline-block;
+            padding: 0.5em 0.5em;
+            border-radius: var(--border-radius);
+            background: rgba(100,100,100,0.5);
+            backdrop-filter: blur(var(--backdrop-blur));
+            color: rgb(255, 255, 255);
+            width: fit-content;
+            max-width: 100%;
+          ">
+          <ol style="margin: 0; padding-left: 0.5em;">
+            <li class="fragment">Petabyte‑scale orbital very large imagery archives</li>
+            <li class="fragment">Bottleneck: Manual mapping</li>           
+            <li class="fragment">Lack of end‑to‑end assisted pipeline</li>
+          </ol>
+        </div>
+        <div style="
+          position: absolute;
+          top: 57em;
+          left: 65em;
+          display: inline-block;
+          color: white;
+          font-size: 0.45em; opacity: 0.8;
+          width: fit-content;">
+          Marius Pit - 59 x 49 m diameter - 40 m depth - Image width 1400 m<br>LROC NAC M114328462R Credit: LROC Team
+        </div>
+      </section>
+      
+      
+
+      <section>
+        <div style="display: flex; align-items: center; height: 80%;">
+          <!-- left column -->
+          <div style="flex: 1; padding-right: 2em;">
+            <h1>Martian and Lunar Pit Databases</h1>
+            <ol>
+              <li class="fragment">Mars → Cushing et al., 2017 → Mars Global Cave Candidate v3 -> point location</li>
+              <li class="fragment">The Moon → LROC Team → Pit Atlas -> point location</li>          
+            </ol>
+          </div>
+
+          <!-- right column -->
+          <div style="flex: 1; text-align: center;">
+            <img
+              class="r-stretch"
+              src="images/Figure-4-Pit-Types.svg"
+              alt="Types of pits, sinkholes, skylights"
+              height="900px"
+            >
+          </div>
+          <div style="
+          position: absolute;
+          bottom: 5px;
+          left: 75%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi et al., 2023
+        </div>
+        </div>
+      </section>        
+    </section>      
+    <!--- research questions-->
+    <section>
+                
+      <h1>2 - Research Questions</h1>
+      <ol>
+        <li class="fragment">Can Deep Learning on high-resolution imagery automate and improve the mapping of these features?</li><br>
+        <li class="fragment">Can orbital subsurface-sounding radar reliably expose hidden cavities beneath or near skylights?</li><br>
+        <li class="fragment">Does today&rsquo;s software stack provide FAIR-compliant, user-friendly access to planetary data workflows?</li><br>
+      </ol>        
+    </section>
+
+    <section>        
+      <!-- Slide 1 -->
+      <section data-background-gradient="linear-gradient(to bottom, #17b2c3, #283b95)">
+        <h1>3- Automated Pit & Skylight Mapping</h1>
+        <p class="fragment fade-up">
+          <span style="color:#ffffff">Can Deep Learning on high-resolution imagery <br>automate and improve the mapping of these features?</span>
+        </p>
+      </section>
+      
+      <section><h1>DeepLandforms:</h1>
+        <h2>A Deep Learning Computer Vision toolset applied to a prime use case for mapping planetary skylights</h2>
+      
+        <h4>Published on Earth and Space Science Journal (AGU)</h4>    
+        <div class="img-row">
+          <img src="images/topdownloaded.png"  alt="First image">
+          <img src="images/topviewd.png" alt="Second image" >
+        </div>
+        
+      </section>
+      
+      <section>
+        <h2>Object Detection and Instance Segmentation</h2>
+        <h4>YOLO and Detectron2 for object detection and pixel‑precise feature extraction</h4>        
+          <img            
+            src="images/Figure-1-Instance-segmentation-detection.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="640px"
+          >
+          <div style="
+          position: absolute;
+          bottom: 5px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi et al, 2023
+        </div>          
+      </section>
+      
+      <section>
+        <h2>Containerized Workflows</h2>      
+        <div style="display: flex; align-items: center; height: 80%;">
+          <!-- left column -->
+          <div style="flex: 1; padding-right: 2em;">
+            <ol>
+              <li class="fragment">ImageProcessingUtils</li>
+              <li class="fragment">LabelMe</li>
+              <li class="fragment" >DeepLandforms‑Training</li>
+              <li class="fragment">DeepLandforms‑Segmentation</li>
+              <li class="fragment">Tensorboard</li>
+            </ol>
+          </div>
+
+          <!-- right column -->
+          <div style="flex: 1; text-align: center;">
+            <img
+              class="r-stretch"
+              src="images/Figure-3-flowchart.png"
+              alt="Types of pits, sinkholes, skylights"
+              width="800px"
+            >
+          </div>
+          <div style="
+          position: absolute;
+          bottom: 5px;
+          left: 75%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi 2025
+        </div>
+        </div>
+        
+      </section>
+      <section>
+        <h2>YOLO &amp; Detectron2 comparative results</h2>
+          <div class="r-stack">        
+            <img                  
+              src="images/Figure-S8-005203_comparison.png"  
+              alt="Types of pits, sinkholes, skylights"
+              height="720px"
+              >
+            <img            
+                class="fragment"    
+                src="images/Figure-10-057434_comparison_map.png"
+                alt="Types of pits, sinkholes, skylights"
+                height="720px"
+              >
+            <img        
+                class="fragment"    
+                src="images/Figure-12-multiple_comparison.png"
+                alt="Types of pits, sinkholes, skylights"
+                height="720px"
+              >
+          </div><br>
+
+          <div style="
+          position: absolute;
+                    
+          left: 50%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi et al, 2023
+        </div>          
+      </section>
+    </section>
+
+    
+
+  <section>        
+    <!-- Slide 2 -->
+    <section data-background-gradient="linear-gradient(to bottom, #008000, #70e000)">
+      <h1>4 - Subsurface Sounding Radar Cavity Detection</h1>
+      <p class="fragment fade-up">
+        <span style="color:#ffffff">Can orbital subsurface-sounding radar reliably expose hidden cavities beneath or near skylights?</span>
+      </p>
+    </section>
+    <section>
+      <h1>Characterization of a lava plain NW of Ascraeus Mons, Mars, through surface morphometric
+        analysis and SHARAD subsurface detections</h1>        
+        <h4>Submitted on Journal of Geophisical Research: Planets Journal (AGU)</h4>
+        <h4>Currently 1st round of reviews</h4>
+        <h4></h4>
+    </section>
+
+    <section>
+      <h2>Study Area &amp; Data</h2>
+      <h4>Shallow lava plain NW of Ascraeus Mons; used high‑resolution DEMs and SHARAD radar tracks.</h4>
+        <div class="r-stack">      
+          <img             
+            src="images/ett6.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="640px"
+          >
+          <img            
+            class="fragment"           
+            src="images/ett7.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="640px"
+          >
+        </div><br>
+
+          <div style="
+          position: absolute;
+          bottom: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi et al, 2025
+        </div>          
+      </section>
+    
+    <section>
+      <h2>Morphometric Analysis</h2>
+      <h4>Mapped surface slopes, roughness, and pit chains; identified flow boundaries and channel infill.</h4>
+      
+        <div class="r-stack">      
+          <img
+            class="fragment fade-out"
+            data-fragment-index="0"
+            src="images/Ascraeus_9.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="640px"
+          >
+          <img            
+            class="fragment current-visible"
+            data-fragment-index="0"
+            src="images/Ascraeus_10.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="640px"
+          >
+          <img            
+            class="fragment"
+            src="images/Ascraeus_11.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="640px"
+          >
+        </div><br>
+
+          <div style="
+          position: absolute;
+          bottom: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi et al, 2025
+        </div>          
+      </section>
+    
+    <section>
+      <h2>SHARAD Processing</h2>
+      <h4>EchoTerraeTrace for multi‑track 3D radar echo comparisons across orbital overpasses.</h4>
+      <div class="r-stack">
+        <img
+          class="fragment fade-out"
+          data-fragment-index="0"
+          src="images/TerraeEchoTraceDraw 2023-12-16 16_24_41.png"
+          alt="Types of pits, sinkholes, skylights"
+          height="640px"
+        >
+        <img            
+          class="fragment current-visible"
+          data-fragment-index="0"
+          src="images/ett3.png"
+          alt="Types of pits, sinkholes, skylights"
+          height="640px"
+        >
+        <img            
+          class="fragment"
+          src="images/ett2.png"
+          alt="Types of pits, sinkholes, skylights"
+          height="640px"
+        >
+      </div><br>
+
+        <div style="
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 0.45em; opacity: 0.8;">
+        Credits: Nodjoumi et al, 2025
+      </div>          
+    </section>
+    
+    <section>
+      <h2>Radar Detections</h2>
+      <h4>Recovered subsurface reflectors at 5–20 m depth, correlating with possible distinct flow units. Cluster analysis</h4>
+      <div class="r-stack">
+        <img
+          class="fragment fade-out"
+          data-fragment-index="0"
+          src="images/ett4.png"
+          alt="Types of pits, sinkholes, skylights"
+          height="640px"
+        >        
+        <img
+          class="fragment"
+          data-fragment-index="0"
+          src="images/track_clusters.png"
+          alt="Types of pits, sinkholes, skylights"
+          height="640px"
+        >      
+      </div><br>
+
+        <div style="
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 0.45em; opacity: 0.8;">
+        Credits: Nodjoumi et al, 2025
+      </div>          
+    </section>
+    
+    <section>
+      <h2>Stratigraphic Scenarios</h2>
+      <h4>Proposed layering: sequence of lava flows intercalated with pyroclastic products from localized minor vents, and/or glacial sediments</h4>
+      <div>      
+        <img          
+          data-fragment-index="0"
+          src="images/photo_2025-04-24_19-25-32.jpg"
+          alt="Types of pits, sinkholes, skylights"
+          height="640px"
+        >        
+      </div><br>
+
+        <div style="
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 0.45em; opacity: 0.8;">
+        Credits: Nodjoumi et al, 2025
+      </div>          
+    </section>
+    
+    <section>
+      <h2>Caveats &amp; Limitations</h2>
+      <p>Resolution limits (&lt;15 m), radar clutter from rough terrain, and dielectric property uncertainties.</p>
+    </section>
+    
+    <section>
+      <h2>Implications</h2>
+      <p>Evidence for complex intercalated layers, with consistent lateral continuity; validates EchoTerraeTrace for future Martian subsurface studies.</p>
+    </section>
+  </section>
+  
+  <section>
+    <!-- Slide 3 -->
+    <section data-background-gradient="linear-gradient(to bottom, #f3722c, #f94144)">
+      <h2>5 - FAIR &amp; Accessible Infrastructure</h2>
+      <p class="fragment fade-up">
+        <span style="color:#ffffff">Does today&rsquo;s software stack provide FAIR-compliant, user-friendly access to planetary data workflows?</span>
+      </p>
+    </section>
+    
+    <section>
+      <h1>Collaborative and Reproducible planetary science through the Europlanet GMAP JupyterHub processing environment</h1>
+      <h4>Submitted on Earth and Space Science Journal (AGU)</h4>
+      <h4>Currently awaiting final editor decision</h4>
+    </section>
+    
+    <section>
+      <h2>Motivation &amp; Goals</h2>
+      <p>
+      <ol>
+        <li class="fragment">Lower barrier to entry for planetary data analysis</li>
+        <li class="fragment">Containerized workflows (Docker + JupyterHub) for consistency</li>
+        <li class="fragment">Enable reproducibility across laptops → HPC clusters</li>
+      </ol>
+    </p>
+    </section>
+
+    <!-- System Architecture -->    
+      <section>
+        <div style="display: flex; align-items: center; height: 80%;">
+          <!-- left column -->
+          <div style="flex: 1; padding-right: 2em;">
+            <h2>System Architecture</h2>
+            <p>
+            <ol>
+              <li class="fragment">Docker images for core tools: ISIS, ASP, GDAL, Python libs</li>
+              <li class="fragment">JupyterHub front-end—access via browser, no local install</li>
+              <li class="fragment">Scalable back-end: Kubernetes integration for HPC</li>
+            </ol>
+          </p>
+          </div>
+
+          <!-- right column -->
+          <div style="flex: 1; text-align: center;background-color: white; display: inline-block; padding: 1rem;">
+            <img
+              class="r-stretch"
+              src="images/Figure_1_JupyterHub_Scheme_v2.png"
+              alt="Types of pits, sinkholes, skylights"              
+              width="700px"
+            >
+          </div>
+          <div style="
+          position: absolute;
+          bottom: 5px;
+          left: 75%;
+          transform: translateX(-50%);
+          color: white;
+          font-size: 0.45em; opacity: 0.8;">
+          Credits: Nodjoumi et al., 2025
+        </div>
+        </div>
+      </section>    
+
+    <section>
+      <div style="display: flex; align-items: center; height: 80%;">
+        <!-- left column -->
+        <div style="flex: 1; padding-right: 2em;">
+          <h2>Key Use Cases</h2>
+          <ol>
+            <li class="fragment">Process planetary data (ISIS, ASP, GDAL, GRASS)</li>
+            <li class="fragment">Rapid prototyping &amp; sharing of new analysis modules</li>
+            <li class="fragment">Workshop and knowledge sharing</li>
+          </ol>
+        </div>
+
+        <!-- right column -->
+        <div style="flex: 1; text-align: center;">
+          <img
+            class="r-stretch"
+            src="images/jhub1.png"
+            alt="Types of pits, sinkholes, skylights"
+            height="600px"
+          >
+        </div>
+        <div style="
+        position: absolute;
+        bottom: 5px;
+        left: 75%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 0.45em; opacity: 0.8;">
+        Credits: Nodjoumi et al., 2025
+      </div>
+      </div>
+    </section>    
+
+
+    <!-- Training & Community -->
+    <section>
+      <h2>Training &amp; Community</h2>
+      <p>
+      <ol>
+        <li class="fragment">Winter schools &amp; hands-on coding workshops</li>
+        <li class="fragment">Splinter sessions at EPSC, EGU, AGU</li>
+        <li class="fragment">Open-source GitHub repos &amp; community contributions</li>
+      </ol>
+    </p>
+    </section>
+    
+  </section>
+  </section>
+    <!-- Related Projects & Collaborations -->
+  <!-- Related Projects & Collaborations -->
+<section id="related-projects-collaborations">
+  <section>
+    <h2>Related Projects &amp; Collaborations</h2>
+  </section>
+  
+  <section style="padding-top: 5rem; text-align: center;">
+
+    <h2 style="color: white;">EXPLORE Project</h2><br>
+  
+    <div style="
+      position: relative;
+      display: inline-block;
+      width: 90vw;           /* or try 60vw, 90vw etc. */
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      margin-top: 2rem;
+    ">
+      <iframe
+        src="https://www.youtube.com/embed/872Po3pcOd4?autoplay=1&mute=1&rel=0"
+        title="Demonstration of EXPLORE project tools to investigate the Moon"
+        frameborder="0"
+        style="width: 100%; height: 100%; border: none;"
+        allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+  
+  </section>
+    
+  <section>
+    <h2>Field Campaigns</h2>
+  </section>
+    
+
+  <section>
+    <div style="display: flex; align-items: center; height: 80%;">
+  
+      <!-- Left column -->
+      <div style="flex: 1; padding-right: 2em;">
+        <h2>Mt. Etna (Italy) – ESA METERON Analog-1 (Miracles)</h2>
+      </div>
+  
+      <!-- Right column with fading stack -->
+      <div class="r-stack" style="flex: 1;">
+  
+        <!-- First image (shows, then fades out) -->
+        <img
+          
+          data-fragment-index="0"
+          src="images/PXL_20220628_100927796.jpg"
+          alt="Analog mission 1"
+          style="max-height: 70vh; width: auto;"
+        >
+  
+        <!-- Second image (fades in and remains visible) -->
+        <img
+          class="fragment"
+          data-fragment-index="1"
+          src="images/PXL_20220630_125430147.jpg"
+          alt="Analog mission 2"
+          style="max-height: 70vh; width: auto;"
+        >
+  
+        <!-- Third image (fades in and stays) -->
+        <img
+          class="fragment"
+          data-fragment-index="2"
+          src="images/PXL_20220630_125439829.jpg"
+          alt="Analog mission 3"
+          style="max-height: 70vh; width: auto;"
+        >
+  
+      </div>
+    </div>
+  </section>
+   
+
+  <section>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+  
+      <!-- Title -->
+      <h2 style="margin-bottom: 2rem;">Lanzarote (Spain) – Lava Tube GPR Surveys</h2>
+  
+      <!-- Image stack (one fades out, the next fades in) -->
+      <div class="r-stack" style="position: relative; width: 100%; max-width: 960px; height: 70vh;">
+  
+        <!-- First image (shows, then fades out) -->             
+        <img
+          
+          data-fragment-index="3"
+          src="images/PXL_20230507_144917637.jpg"
+          alt="Survey Image 4"
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                 max-height: 100%; max-width: 100%;"
+        >
+         <!-- Second image -->
+  
+        <img
+          class="fragment fade-out"
+          data-fragment-index="4"
+          src="images/PXL_20230507_154844962.jpg"
+          alt="Survey Image 4"
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                 max-height: 100%; max-width: 100%;"
+        >
+
+        <!-- Third image -->
+        <img
+          class="fragment current-visible"
+          data-fragment-index="5"
+          src="images/photo_2025-04-24_21-50-37.jpg"
+          alt="Survey Image 4"
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                 max-height: 120%; max-width: 120%;"
+        >
+      </div>
+    </div>
+  </section>
+  
+  
+
+  <section id="publications-mentorship">
+    <h2>Publications &amp; Mentorship</h2>
+    <!-- Image Placeholder -->    
+    <ol >
+      <li class="fragment">MARSIS Reader -> MATISSE - Space Science Data Center (SSDC) - Italian Space Agency (ASI)</li>
+      <li class="fragment">MoonIndex spectral index generation - Suarèz et al., 2024</li>
+      <li class="fragment">CRISM Hyperspectral Toolkit - Nodjoumi et al., on-going</li>
+      <li class="fragment">Lunar Graben auto-scaling - Luzzi et al., 2022</li>
+      <li class="fragment">Archytas Dome traverse design - Lewis et al., 2024</li>
+      <li class="fragment">Geomorphology and ice content of Coloe Fossae (Mars) - Luzzi et al., on-going</li>
+      <li class="fragment">Basal ice surface and content of Medusae Fossae Formation (Mars) - Orosei/Lauro et al., on-going</li>
+      <li class="fragment">Student-led projects: A) Mars Dust Storm detection using CNN - B) Pit detction using brightness profiles and CNN</li>
+
+    </ol>
+  </section>
+</section>
+
+<section>
+  <section id="future-directions">
+    <h1>Future Directions</h1>
+  </section>
+
+  <section id="dl-future">
+    <h2>DeepLandforms Enhancements</h2>
+    <!-- Image Placeholder -->    
+     <p>
+    <ol>
+      <li class="fragment">Sliding-window inference for full-frame HiRISE/RDR processing</li>
+      <li class="fragment">Integrate DTMs, hyperspectral layers &amp; GPR analogs in the analysis</li>
+      <li class="fragment">Expand to lunar lava pit, skylights, &amp; new landforms</li>
+    </ol>
+  </p>
+  </section>
+
+  <section id="radar-future">
+    <h2>Radar Analysis Advancements</h2>
+    <!-- Image Placeholder -->    
+     <p>
+    <ol>      
+      <li class="fragment">Volumetric 3D correlation of multi-track echoes</li>
+      <li class="fragment">Standardized pre-/post-processing; validate with terrestrial GPR</li>
+    </ol>
+    </p>
+  </section>
+
+  <section id="jupyterhub-future">
+    <h2>GMAP JupyterHub Roadmap</h2>
+    <p>
+    <ol>      
+      <li class="fragment">Deploy on ASI SSDC HPC Infrastructure (on-going) &amp; integrate with EGI/ESA/EPN services</li>
+      <li class="fragment">Workshops (EGU, AGU), EGI collaboration &amp; open-source hackathons</li>
+    </ol>
+    </p>
+  </section>
+</section>
+    
+
+<section id="conclusive-remarks">  
+  <section>
+    <h1>Conclusive Remarks</h1>
+  </section>
+
+  <section id="automation-feasibility">
+    <h2>Automation Feasibility</h2>    
+    <p>
+    <ol>
+      <li class="fragment">DeepLandforms: scalable instance-segmentation of pits/skylights, proved compatible with other landforms (Lunar Craters and boulders)</li>
+      <li class="fragment">YOLO &amp; Detecton2 benchmarks confirm DL viability on planetary imagery</li>
+      <li class="fragment">Reduced manual bias, uniform global surveys</li>
+      <li class="fragment">Large datasets and longer training are necessary for robust results</li>
+    </ol>
+  </p>
+  </section>
+
+  <section id="radar-insights">
+    <h2>Radar Insights</h2>
+      <p>
+    <ol>
+      <li class="fragment">EchoTerraeTrace: multi-track SHARAD/MARSIS &amp; 3D echo analysis tool</li>
+      <li class="fragment">Consistent subsurface reflectors beneath lava flows</li>
+      <li class="fragment">Caveats: clutter, RADAR and DEM resolution limits &amp; dielectric uncertainties</li>
+    </ol>
+  </p>
+  </section>
+
+  <section id="infrastructure-access">
+    <h2>Planetary software stack &amp; Infrastructure Access</h2>
+    <!-- Image Placeholder -->    
+     <p>
+    <ol>
+      <li class="fragment">JupyterHub + Docker: FAIR, reproducible GMAP environment</li>
+      <li class="fragment">Browser-based GIS workflows—no local install needed</li>
+      <li class="fragment">Open-source, extendable platform for community contributions</li>
+    </ol>
+  </p>
+  </section>
+</section>
+<section
+data-background-image="images/AP_21045347126688-e1613297273170.jpg"
+data-background-size="cover"
+data-background-position="center"
+data-transition="fade"
+>
+<div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  padding: 2rem;
+">
+  <h1>Thank You</h1><br><br>
+  <h4>For your attention, your curiosity, and your time.</h4><br><br>
+  <h4>Questions or thoughts are always welcome!</h4>  
+</div>
+</section>
+
+
+
+<section data-visibility="uncounted">
+  <!-- 5 -->
+  <section>
+    <h2>Image Pre‑processing</h2>
+    <p>Resizing, cropping, tiling, border‑removal, format conversion while preserving georeferencing</p>
+
+  </section>
+  <section>
+    <div class="img-2col">
+      <!-- Left: full-height original -->
+      <div class="left">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m.jpg" alt="Original image">
+      </div>
+    
+      <!-- right: 6× mosaic -->
+      <div class="right">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m_H_0_V_0.jpg" alt="Tile 1">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m_H_1_V_0.jpg" alt="Tile 2">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m_H_2_V_0.jpg" alt="Tile 3">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m_H_3_V_0.jpg" alt="Tile 4">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m_H_3_V_0.jpg" alt="Tile 5">
+        <img src="images/ESP_012600_1655_RED_resized_10.0m_H_4_V_1.jpg" alt="Tile 6">
+      </div>
+    </div>
+    <div style="
+    position: absolute;
+    top: 57em;
+    left: 65em;
+    display: inline-block;
+    color: white;
+    font-size: 0.45em; opacity: 0.8;
+    width: fit-content;">
+    Marius Pit - 59 x 49 m diameter - 40 m depth - Image width 1400 m<br>LROC NAC M114328462R Credit: LROC Team
+  </div>
+  </section>
+  
+  <!-- 6 -->
+  <section>
+    <h2>Dataset Preparation</h2>
+    <p>Label ingestion, class definition, data augmentation (noise, blur), train/val/test split</p>
+    
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2>Model Training</h2>
+    <p>Hyperparameter tuning (LR, batch size, epochs), transfer learning from pre‑trained backbones</p>
+ 
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2>Inference &amp; Export</h2>
+    <p>Convert detection masks to GIS‑ready GeoPackage polygons via Rasterio</p>
+   
+  </section>
+
+  <!-- 9 -->
+  <section>
+    <h2>Performance Metrics</h2>
+    <p>mean Average Precision (mAP), precision–recall curves, Intersection over Union (IoU)</p>
+
+  </section>
+
+  <!-- 10 -->
+  <section>
+    <h2>Use Case</h2>
+    <p>Mapping Martian pits and skylights; validated against the MGC³ catalog</p>
+   
+  </section>
+
+  <!-- 11 -->
+  <section>
+    <h2>Final Output</h2>          
+  </section>
+</section>
+
+<!-- 1.1.1 Geology of Mars -->
+ <section>
+  <section data-background-image="images/Mars_geo_map.jpg"
+            data-background-size="3000px"
+            data-background-position="center"
+            data-background-repeat="no-repeat"
+            data-visibility="uncounted"
+          >
+    <h2>Geology of Mars</h2>
+  </section>
+
+  <section>
+    <ol>
+      <li class="fragment">~4.6 Ga origin, Noachian aqueous erosion → valley networks & outflow channels</li>
+      <li class="fragment">Hesperian volcanism built Tharsis (Olympus Mons, Arsia Mons…) & Syrtis Major</li>
+      <li class="fragment">Thin CO₂ atmosphere (–63 °C avg.), 0.38 g → aeolian sculpting of volcanoes, canyons, basins</li>
+      <li class="fragment">Global geologic map released in 2014 (Tanaka et al. 2014)</li>
+    </ol>
+  </section>
+
+  <!-- 1.1.2 Geology of the Moon -->
+  <section data-background-image="images/moon-map-from-usgscmp2.png"
+            data-background-size="3000px"
+            data-background-position="center"
+            data-background-repeat="no-repeat"
+            data-visibility="uncounted"
+          >
+    <h2>Geology of the Moon</h2>
+  </section>
+
+  <section>
+    <ol>
+      <li class="fragment">Highlands of ferroan‑anorthosite from Lunar Magma Ocean; maria from 3.0‑4.1 Ga basaltic floods</li>
+      <li class="fragment">Rilles, pyroclastics, limited intrusive record → dominantly extrusive volcanism (Cruishank & Wood 1972)</li>
+      <li class="fragment">Giant‑impact origin → differentiated mantle, KREEP layer, plagioclase crust</li>
+      <li class="fragment">Global lunar geologic map published 2020 (Fortezzo et al. 2020)</li>
+    </ol>
+  </section>
+</section>
+  
+</section>
+</section>
+
+
+
+   
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      center:             true,
+      slideNumber:        true,
+      width:              1920,
+      height:             1080,
+      margin: 0,
+      minScale: 1,
+      maxScale: 1,
+      // Parallax background
+      //parallaxBackgroundImage:      'images/AP_21045347126688-e1613297273170.jpg',
+      parallaxBackgroundSize:       '3840px 2160px',
+      parallaxBackgroundHorizontal: 200,
+      parallaxBackgroundVertical:   50
+    });
+  </script>
+</body>
+</html>
