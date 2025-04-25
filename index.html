@@ -268,6 +268,25 @@ body, .reveal {
   line-height: 1.2;
 }
 
+  .delayed-fade-in {
+    opacity: 0;
+  }
+
+  .fadeInUpOnce {
+    animation: fadeInUp 1s ease-out 1.5s forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   </style>
 
 
@@ -353,7 +372,16 @@ body, .reveal {
         </p>
       </section>
       
-
+    <!--- research questions-->
+    <section>
+                
+      <h1>1 - Research Questions</h1>
+      <ol>
+        <li class="fragment">Can Deep Learning on high-resolution imagery automate and improve the mapping of planetary surface features?</li><br>
+        <li class="fragment">Can orbital subsurface-sounding radar reliably expose hidden cavities beneath or near skylights?</li><br>
+        <li class="fragment">Does today&rsquo;s software stack provide FAIR-compliant, user-friendly access to planetary data workflows?</li><br>
+      </ol>        
+    </section>
       
     <section>
       <section class="vertical-bg" 
@@ -369,7 +397,7 @@ body, .reveal {
           left: 50%;
           transform: translate(-50%, -50%);
           color: white;">
-          1 - Pits, Sinkholes &amp; Skylights
+          2 - Pits, Sinkholes &amp; Skylights
         </h1>
 
         <!-- Bottom-centered credits at ~1040px -->
@@ -388,13 +416,13 @@ body, .reveal {
 
 
       <!-- 1.2 Pits, Sinkholes & Skylights -->
-      <section>
+      <section id="pits">
         <div style="display: flex; align-items: center; height: 80%;">
           <!-- left column -->
           <div style="flex: 1; padding-right: 2em;">
             <h3>Elliptical to circular depressions with flat rims/bottoms, steep to sub‑vertical walls</h3>
           </div>
-
+      
           <!-- right column -->
           <div style="flex: 1; text-align: center;">
             <img
@@ -404,17 +432,58 @@ body, .reveal {
               height="900px"
             >
           </div>
+      
+          <!-- Credits -->
           <div style="
+            position: absolute;
+            bottom: 5px;
+            left: 75%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.45em;
+            opacity: 0.8;">
+            Credits: Nodjoumi 2025
+          </div>
+        </div>
+      
+        <!-- Geology of Mars link -->
+        <div style="
           position: absolute;
-          bottom: 5px;
-          left: 75%;
-          transform: translateX(-50%);
-          color: white;
-          font-size: 0.45em; opacity: 0.8;">
-          Credits: Nodjoumi 2025
+          bottom: 2em;
+          left: 2em;
+          padding: 0.5em 0.5em;
+          border-radius: var(--border-radius);
+          background: rgba(255,255,255,0.5);
+          backdrop-filter: blur(var(--backdrop-blur));
+          color: rgb(255, 255, 255);
+          width: fit-content;
+          max-width: 100%;
+          font-size: 0.3em;
+          z-index: 10;
+        ">
+          <a href="#/mars" style="color: white; text-decoration: none;">Geology of Mars</a>
         </div>
+      
+        <!-- Geology of the Moon link -->
+        <div style="
+          position: absolute;
+          bottom: 2em;
+          left: 14em;
+          display: inline-block;
+          padding: 0.5em 0.5em;
+          border-radius: var(--border-radius);
+          background: rgba(255,255,255,0.5);
+          backdrop-filter: blur(var(--backdrop-blur));
+          color: rgb(255, 255, 255);
+          width: fit-content;
+          max-width: 100%;
+          font-size: 0.3em;
+          z-index: 10;
+        ">
+          <a href="#/moon" style="color: white; text-decoration: none;">Geology of the Moon</a>
         </div>
-      </section>        
+      </section>
+             
 
       <section data-background-image="images/PXL_20230506_140753912.jpg" data-background-size="cover">
 
@@ -442,6 +511,8 @@ body, .reveal {
             <li class="fragment">Morphology varies with gravity, volcanic style, planetary conditions</li>
           </ol>
         </div>
+        
+        
       
       </section>
       
@@ -589,23 +660,15 @@ body, .reveal {
         </div>
       </section>        
     </section>      
-    <!--- research questions-->
-    <section>
-                
-      <h1>2 - Research Questions</h1>
-      <ol>
-        <li class="fragment">Can Deep Learning on high-resolution imagery automate and improve the mapping of these features?</li><br>
-        <li class="fragment">Can orbital subsurface-sounding radar reliably expose hidden cavities beneath or near skylights?</li><br>
-        <li class="fragment">Does today&rsquo;s software stack provide FAIR-compliant, user-friendly access to planetary data workflows?</li><br>
-      </ol>        
-    </section>
+    
 
     <section>        
       <!-- Slide 1 -->
-      <section data-background-gradient="linear-gradient(to bottom, #17b2c3, #283b95)">
+      <section data-background-gradient="linear-gradient(to bottom, #0096c7, #03045e)">
         <h1>3- Automated Pit & Skylight Mapping</h1>
-        <p class="fragment fade-up">
-          <span style="color:#ffffff">Can Deep Learning on high-resolution imagery <br>automate and improve the mapping of these features?</span>
+        <p>
+          <span class="delayed-fade-in" style="color:#ffffff">
+            Can Deep Learning on high-resolution imagery <br>automate and improve the mapping of these features?</span>
         </p>
       </section>
       
@@ -712,10 +775,12 @@ body, .reveal {
 
   <section>        
     <!-- Slide 2 -->
-    <section data-background-gradient="linear-gradient(to bottom, #008000, #70e000)">
+    <section data-background-gradient="linear-gradient(to bottom, #26A62B, #125208)">
+
       <h1>4 - Subsurface Sounding Radar Cavity Detection</h1>
-      <p class="fragment fade-up">
-        <span style="color:#ffffff">Can orbital subsurface-sounding radar reliably expose hidden cavities beneath or near skylights?</span>
+      <p>
+        <span class="delayed-fade-in" style="color:#ffffff">
+          Can orbital subsurface-sounding radar reliably expose hidden cavities beneath or near skylights?</span>
       </p>
     </section>
     <section>
@@ -896,12 +961,15 @@ body, .reveal {
   
   <section>
     <!-- Slide 3 -->
-    <section data-background-gradient="linear-gradient(to bottom, #f3722c, #f94144)">
+    <section data-background-gradient="linear-gradient(to bottom, #db7c26, #8d0801)">
       <h2>5 - FAIR &amp; Accessible Infrastructure</h2>
-      <p class="fragment fade-up">
-        <span style="color:#ffffff">Does today&rsquo;s software stack provide FAIR-compliant, user-friendly access to planetary data workflows?</span>
+      <p>
+        <span class="delayed-fade-in" style="color:#ffffff">
+          Does today&rsquo;s software stack provide FAIR-compliant, user-friendly access to planetary data workflows?
+        </span>
       </p>
     </section>
+    
     
     <section>
       <h1>Collaborative and Reproducible planetary science through the Europlanet GMAP JupyterHub processing environment</h1>
@@ -1139,7 +1207,7 @@ body, .reveal {
       <li class="fragment">Lunar Graben auto-scaling - Luzzi et al., 2022</li>
       <li class="fragment">MoonIndex spectral index generation - Suarèz et al., 2024</li>
       <li class="fragment">Archytas Dome traverse design - Lewis et al., 2024</li>      
-      <li class="fragment">"Near-surface ice in Northern Amazonis Planitia (Mars) - Luzzi et al., 2025</li>
+      <li class="fragment">Near-surface ice in Northern Amazonis Planitia (Mars) - Luzzi et al., 2025</li>
       <li class="fragment">Geomorphology and ice content of Coloe Fossae (Mars) - Luzzi et al., on-going</li>
       <li class="fragment">Basal ice surface and content of Medusae Fossae Formation (Mars) - Orosei/Lauro et al., on-going</li>
       <li class="fragment">CRISM Hyperspectral Toolkit - Nodjoumi et al., on-going</li>
@@ -1246,20 +1314,18 @@ data-transition="fade"
   text-align: center;
   padding: 2rem;
 ">
-  <h1>Thank You</h1><br><br>
-  <h4>For your attention, your curiosity, and your time.</h4><br><br>
-  <h4>Questions or thoughts are always welcome!</h4>  
+  <h1>Thank You</h1>    
 </div>
 </section>
 
-<section data-visibility="uncounted">
+<section>
   <!-- 5 -->
-  <section>
+  <section data-visibility="uncounted">
     <h2>Image Pre‑processing</h2>
     <p>Resizing, cropping, tiling, border‑removal, format conversion while preserving georeferencing</p>
 
   </section>
-  <section>
+  <section data-visibility="uncounted">
     <div class="img-2col">
       <!-- Left: full-height original -->
       <div class="left">
@@ -1289,25 +1355,25 @@ data-transition="fade"
   </section>
   
   <!-- 6 -->
-  <section>
+  <section data-visibility="uncounted">
     <h2>Dataset Preparation</h2>
     <p>Label ingestion, class definition, data augmentation (noise, blur), train/val/test split</p>
     
   </section>
 
   <!-- 7 -->
-  <section>
+  <section data-visibility="uncounted">
     <h2>Model Training</h2>
     <p>Hyperparameter tuning (LR, batch size, epochs), transfer learning from pre‑trained backbones</p>
  
   </section>
 
   <!-- 8 -->
-  <section>
+  <section data-visibility="uncounted">
     <h2>Inference &amp; Export</h2>
     <p>Convert detection masks to GIS‑ready GeoPackage polygons via Rasterio</p>
    
-  </section>
+  </section data-visibility="uncounted"> 
 
   <!-- 9 -->
   <section>
@@ -1317,55 +1383,89 @@ data-transition="fade"
   </section>
 
   <!-- 10 -->
-  <section>
+  <section data-visibility="uncounted">
     <h2>Use Case</h2>
     <p>Mapping Martian pits and skylights; validated against the MGC³ catalog</p>
    
   </section>
 
   <!-- 11 -->
-  <section>
+  <section data-visibility="uncounted">
     <h2>Final Output</h2>          
   </section>
 </section>
 
-<!-- 1.1.1 Geology of Mars -->
- <section>
+
+<section  id="mars"  data-visibility="uncounted">
   <section data-background-image="images/Mars_geo_map.jpg"
             data-background-size="3000px"
             data-background-position="center"
-            data-background-repeat="no-repeat"
-            data-visibility="uncounted"
-          >
+            data-background-repeat="no-repeat"        
+            data-visibility="uncounted">
     <h2>Geology of Mars</h2>
   </section>
 
-  <section>
+  <section data-visibility="uncounted">
     <ol>
       <li class="fragment">~4.6 Ga origin, Noachian aqueous erosion → valley networks & outflow channels</li>
       <li class="fragment">Hesperian volcanism built Tharsis (Olympus Mons, Arsia Mons…) & Syrtis Major</li>
       <li class="fragment">Thin CO₂ atmosphere (–63 °C avg.), 0.38 g → aeolian sculpting of volcanoes, canyons, basins</li>
       <li class="fragment">Global geologic map released in 2014 (Tanaka et al. 2014)</li>
     </ol>
+    <!-- Geology of the Moon link -->
+    <div style="
+    position: absolute;
+    top: 50em;
+    left: 60rem;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    border-radius: var(--border-radius);
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(var(--backdrop-blur));
+    color: rgb(255, 255, 255);
+    width: fit-content;
+    max-width: 100%;
+    font-size: 0.3em;
+    z-index: 10;
+  ">
+    <a href="#/pits" style="color: white; text-decoration: none;">Back to Pits</a>
+  </div>
   </section>
 
   <!-- 1.1.2 Geology of the Moon -->
-  <section data-background-image="images/moon-map-from-usgscmp2.png"
+  <section  id="moon" data-background-image="images/moon-map-from-usgscmp2.png"
             data-background-size="3000px"
             data-background-position="center"
-            data-background-repeat="no-repeat"
+            data-background-repeat="no-repeat"            
             data-visibility="uncounted"
           >
     <h2>Geology of the Moon</h2>
   </section>
 
-  <section>
+  <section data-visibility="uncounted">
     <ol>
       <li class="fragment">Highlands of ferroan‑anorthosite from Lunar Magma Ocean; maria from 3.0‑4.1 Ga basaltic floods</li>
       <li class="fragment">Rilles, pyroclastics, limited intrusive record → dominantly extrusive volcanism (Cruishank & Wood 1972)</li>
       <li class="fragment">Giant‑impact origin → differentiated mantle, KREEP layer, plagioclase crust</li>
       <li class="fragment">Global lunar geologic map published 2020 (Fortezzo et al. 2020)</li>
     </ol>
+    <div style="
+    position: absolute;
+    top: 50em;
+    left: 60rem;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    border-radius: var(--border-radius);
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(var(--backdrop-blur));
+    color: rgb(255, 255, 255);
+    width: fit-content;
+    max-width: 100%;
+    font-size: 0.3em;
+    z-index: 10;
+  ">
+    <a href="#/pits" style="color: white; text-decoration: none;">Back to Pits</a>
+  </div>
   </section>
 </section>
   
@@ -1395,6 +1495,24 @@ data-transition="fade"
       parallaxBackgroundHorizontal: 200,
       parallaxBackgroundVertical:   50
     });
+    const animatedSlides = new Set();
+
+  Reveal.on('slidechanged', event => {
+    const currentSlide = event.currentSlide;
+
+    if (!animatedSlides.has(currentSlide)) {
+      const elems = currentSlide.querySelectorAll('.delayed-fade-in');
+      elems.forEach(el => el.classList.add('fadeInUpOnce'));
+      animatedSlides.add(currentSlide); // Mark as animated
+    }
+  });
+
+  Reveal.on('ready', event => {
+    const firstSlide = event.currentSlide;
+    const elems = firstSlide.querySelectorAll('.delayed-fade-in');
+    elems.forEach(el => el.classList.add('fadeInUpOnce'));
+    animatedSlides.add(firstSlide);
+  });
   </script>
 </body>
 </html>
