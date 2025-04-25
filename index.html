@@ -665,7 +665,7 @@ body, .reveal {
     <section>        
       <!-- Slide 1 -->
       <section data-background-gradient="linear-gradient(to bottom, #0096c7, #03045e)">
-        <h1>3- Automated Pit & Skylight Mapping</h1>
+        <h1>3 - Automated Pit & Skylight Mapping</h1>
         <p>
           <span class="delayed-fade-in" style="color:#ffffff">
             Can Deep Learning on high-resolution imagery <br>automate and improve the mapping of these features?</span>
@@ -683,7 +683,7 @@ body, .reveal {
         
       </section>
       
-      <section>
+      <section id="ODIS">
         <h2>Object Detection and Instance Segmentation</h2>
         <h4>YOLO and Detectron2 for object detection and pixel‑precise feature extraction</h4>        
           <img            
@@ -700,9 +700,25 @@ body, .reveal {
           font-size: 0.45em; opacity: 0.8;">
           Credits: Nodjoumi et al, 2023
         </div>          
+        <div style="
+          position: absolute;
+          bottom: 2em;
+          left: 2em;
+          padding: 0.5em 0.5em;
+          border-radius: var(--border-radius);
+          background: rgba(255,255,255,0.5);
+          backdrop-filter: blur(var(--backdrop-blur));
+          color: rgb(255, 255, 255);
+          width: fit-content;
+          max-width: 100%;
+          font-size: 0.3em;
+          z-index: 10;
+        ">
+          <a href="#/CNN" style="color: white; text-decoration: none;">CNN</a>
+        </div>
       </section>
       
-      <section>
+      <section id="dlfwork">
         <h2>Containerized Workflows</h2>      
         <div style="display: flex; align-items: center; height: 80%;">
           <!-- left column -->
@@ -733,6 +749,22 @@ body, .reveal {
           color: white;
           font-size: 0.45em; opacity: 0.8;">
           Credits: Nodjoumi 2025
+        </div>
+        <div style="
+          position: absolute;
+          bottom: 2em;
+          left: 2em;
+          padding: 0.5em 0.5em;
+          border-radius: var(--border-radius);
+          background: rgba(255,255,255,0.5);
+          backdrop-filter: blur(var(--backdrop-blur));
+          color: rgb(255, 255, 255);
+          width: fit-content;
+          max-width: 100%;
+          font-size: 0.3em;
+          z-index: 10;
+        ">
+          <a href="#/dlnf" style="color: white; text-decoration: none;">DeepLandforms details</a>
         </div>
         </div>
         
@@ -1353,8 +1385,145 @@ data-transition="fade"
     Marius Pit - 59 x 49 m diameter - 40 m depth - Image width 1400 m<br>LROC NAC M114328462R Credit: LROC Team
   </div>
   </section>
+</section>
+
+<section id="CNN">
+  <!-- 6 -->  
+  <section data-background-gradient="linear-gradient(to bottom, #4cc9f0, #023e8a)">
+    <h2>Deep Learning Architectures</h2>    
+    <h4>🧠 What is a CNN?</h4>
+    <p class="fragment fade-in" style="color:#ffffff">
+      A Convolutional Neural Network (CNN) is an algorithm that takes in an input image, assigns importance to various aspects/objects, 
+      and learns how to differentiate among them. It is composed mainly of <strong>Convolution Layers</strong>, <strong>Pooling Layers</strong>, 
+      and <strong>Fully Connected Layers</strong> in different configurations.
+    </p>
+  </section>
   
-  <!-- 6 -->
+  
+  <section>
+    <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; color: #ffffff;">
+  
+      <!-- GIF 1 + Description -->
+      <div style="text-align: center; max-width: 40%;">
+        <img src="images/how-convolutional-layer-work-what-is-convolutional-neural-network-deep-learning-data-science.gif" alt="Convolution Layers" style="max-width: 100%; border-radius: 10px;">
+        <p>
+          <span style="color:#ffffff; font-weight:bold">Convolution Layers</span>: Specific 
+          <span style="color:#ffffff; font-weight:bold">kernels/filters</span> used to reduce the complexity of an image into 
+          <span style="color:#ffffff; font-weight:bold">high-level features</span> 
+          (e.g., <span style="color:#ffffff; font-weight:bold">edges</span>, <span style="color:#ffffff; font-weight:bold">color</span>, 
+          <span style="color:#ffffff; font-weight:bold">gradient orientation</span>).
+        </p>
+      </div>
+  
+      <!-- Kernel Matrix -->
+      <div style="text-align: center; margin: 20px;">
+        <p><span style="color:#ffffff; font-weight:bold">Kernel / Filter:</span></p>
+        <pre style="font-size: 1.2em;  color: #ffffff; ">
+  1 0 1
+  0 1 0
+  1 0 1
+        </pre>
+      </div>
+  
+      <!-- GIF 2 + Description -->
+      <div style="text-align: center; max-width: 40%;">
+        <img src="images/1_uoWYsCV5vBU8SHFPAPao-w.gif" alt="Pooling Layers" style="max-width: 100%; border-radius: 10px;">
+        <p>
+          <span style="color:#ffffff; font-weight:bold">Pooling Layers</span>: Reduce the 
+          <span style="color:#ffffff; font-weight:bold">spatial size</span> of the convolved features. Useful for reducing 
+          <span style="color:#ffffff; font-weight:bold">computation</span> and extracting 
+          <span style="color:#ffffff; font-weight:bold">dominant features</span>. E.g., 
+          <span style="color:#ffffff; font-weight:bold">max pooling</span>.
+        </p>
+      </div>
+  
+    </div>
+  </section>
+  
+  
+  <section>
+    <h2>🔍 YOLO vs Detectron2</h2>
+    <p>Key Differences at a Glance</p>
+    <aside class="notes">
+      Briefly explain that YOLO and Detectron2 represent different paradigms: one focused on speed, the other on modularity and accuracy.
+    </aside>
+  </section>
+  
+  <section>
+    <h3>📊 Comparison Table</h3>
+    <table>
+      <thead>
+        <tr>
+          <th><span style="color:#ffffff; font-weight:bold">Feature</span></th>
+          <th><span style="color:#ffffff; font-weight:bold">YOLO</span></th>
+          <th><span style="color:#ffffff; font-weight:bold">Detectron2</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Detection type</td>
+          <td>Single-stage</td>
+          <td>Two-stage</td>
+        </tr>
+        <tr>
+          <td>Speed</td>
+          <td>⚡ Very fast</td>
+          <td>🐢 Slower</td>
+        </tr>
+        <tr>
+          <td>Accuracy</td>
+          <td>✅ Good</td>
+          <td>✅✅ Higher (in complex scenes)</td>
+        </tr>
+        <tr>
+          <td>Extensibility</td>
+          <td>Medium (less modular)</td>
+          <td>High (research-friendly)</td>
+        </tr>
+        <tr>
+          <td>Use case</td>
+          <td>Real-time apps, edge</td>
+          <td>Research, in-depth analysis</td>
+        </tr>
+        <tr>
+          <td>Model types</td>
+          <td>Detection, basic segmentation</td>
+          <td>Detection, segmentation, keypoints</td>
+        </tr>
+        <tr>
+          <td>Framework</td>
+          <td>PyTorch, ONNX (YOLOv5/8)</td>
+          <td>PyTorch (Facebook AI)</td>
+        </tr>
+        <tr>
+          <td>Tooling</td>
+          <td>Lightweight, deployable</td>
+          <td>Heavy, but powerful</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="
+          position: absolute;
+          bottom: 2em;
+          left: 2em;
+          padding: 0.5em 0.5em;
+          border-radius: var(--border-radius);
+          background: rgba(255,255,255,0.5);
+          backdrop-filter: blur(var(--backdrop-blur));
+          color: rgb(255, 255, 255);
+          width: fit-content;
+          max-width: 100%;
+          font-size: 0.3em;
+          z-index: 10;
+        ">
+          <a href="#/ODIS" style="color: white; text-decoration: none;">DeepLandforms</a>
+        </div>
+  </section>
+</section>  
+<section id="dlnf">
+  <section data-visibility="uncounted">
+    <h2>DeepLandforms</h2>    
+  </section>
   <section data-visibility="uncounted">
     <h2>Dataset Preparation</h2>
     <p>Label ingestion, class definition, data augmentation (noise, blur), train/val/test split</p>
@@ -1392,7 +1561,24 @@ data-transition="fade"
   <!-- 11 -->
   <section data-visibility="uncounted">
     <h2>Final Output</h2>          
+    <div style="
+          position: absolute;
+          bottom: 2em;
+          left: 2em;
+          padding: 0.5em 0.5em;
+          border-radius: var(--border-radius);
+          background: rgba(255,255,255,0.5);
+          backdrop-filter: blur(var(--backdrop-blur));
+          color: rgb(255, 255, 255);
+          width: fit-content;
+          max-width: 100%;
+          font-size: 0.3em;
+          z-index: 10;
+        ">
+          <a href="#/dlfwork" style="color: white; text-decoration: none;">DeepLandforms structure</a>          
+        </div>
   </section>
+    
 </section>
 
 
@@ -1401,8 +1587,8 @@ data-transition="fade"
             data-background-size="3000px"
             data-background-position="center"
             data-background-repeat="no-repeat"        
-            data-visibility="uncounted">
-    <h2>Geology of Mars</h2>
+            >
+    <h1>Geology of Mars</h1>
   </section>
 
   <section data-visibility="uncounted">
@@ -1439,7 +1625,7 @@ data-transition="fade"
             data-background-repeat="no-repeat"            
             data-visibility="uncounted"
           >
-    <h2>Geology of the Moon</h2>
+    <h1>Geology of the Moon</h1>
   </section>
 
   <section data-visibility="uncounted">
