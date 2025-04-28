@@ -989,17 +989,17 @@ body, .reveal {
     
     <section>
       <h1>Collaborative and Reproducible planetary science through the Europlanet GMAP JupyterHub processing environment</h1>
-      <h4>Submitted on Earth and Space Science Journal (AGU)</h4>
-      <h4>Currently awaiting final editor decision</h4>
+      <h4>Accepted for publication on Earth and Space Science Journal (AGU) - 28th April 2025</h4>      
     </section>
     
     <section>
       <h2>Motivation &amp; Goals</h2>
       <p>
       <ol>
-        <li class="fragment">Lower barrier to entry for planetary data analysis</li>
+        <li class="fragment">Lower barrier for planetary data processing and analysis</li>
         <li class="fragment">Containerized workflows (Docker + JupyterHub) for consistency</li>
         <li class="fragment">Enable reproducibility across laptops → HPC clusters</li>
+        <li class="fragment">Promotes collaborative workflows and dissemination</li>
       </ol>
     </p>
     </section>
@@ -1014,7 +1014,7 @@ body, .reveal {
             <ol>
               <li class="fragment">Docker images for core tools: ISIS, ASP, GDAL, Python libs</li>
               <li class="fragment">JupyterHub front-end—access via browser, no local install</li>
-              <li class="fragment">Scalable back-end: Kubernetes integration for HPC</li>
+              <li class="fragment">Scalable back-end: Kubernetes-compatible for HPC</li>
             </ol>
           </p>
           </div>
@@ -1079,9 +1079,9 @@ body, .reveal {
       <h2>Training &amp; Community</h2>
       <p>
       <ol>
-        <li class="fragment">Winter schools &amp; hands-on coding workshops</li>
+        <li class="fragment">Winter schools &amp; hands-on workshops</li>
         <li class="fragment">Splinter sessions and workshops at EPSC, EGU, ERIM, COSPAR</li>
-        <li class="fragment">Open-source GitHub repos &amp; community contributions</li>
+        <li class="fragment">Open-source GitHub repositories &amp; community contributions</li>
       </ol>
     </p>
     </section>
@@ -1256,7 +1256,8 @@ body, .reveal {
      <p>
     <ol>      
       <li class="fragment">Volumetric 3D correlation of multi-track echoes</li>
-      <li class="fragment">Standardized pre-/post-processing; validate with terrestrial GPR</li>
+      <li class="fragment">Standardized pre-/post-processing</li>
+      <li class="fragment">Extend to radar tracks crossing lava tubes</li>
     </ol>
     </p>
   </section>
@@ -1285,7 +1286,7 @@ body, .reveal {
       <li class="fragment">DeepLandforms: scalable instance-segmentation of pits/skylights, proved compatible with other landforms (Lunar Craters and boulders)</li>
       <li class="fragment">YOLO &amp; Detecton2 benchmarks confirm DL viability on planetary imagery</li>
       <li class="fragment">Reduced manual bias, uniform global surveys</li>
-      <li class="fragment">Large datasets and longer training are necessary for robust results</li>
+      <li class="fragment">Caveats: Large datasets and longer training are necessary for robust results</li>
     </ol>
   </p>
   </section>
@@ -1711,8 +1712,8 @@ data-transition="fade"
       height:             1080,
       margin: 0,
         // Bounds for smallest/largest possible scale to apply to content
-      minScale: 0.02,
-      maxScale: 8.0,
+      minScale: 1.0,
+      maxScale: 1.0,
       // Parallax background
       //parallaxBackgroundImage:      'images/AP_21045347126688-e1613297273170.jpg',
       parallaxBackgroundSize:       '3840px 2160px',
